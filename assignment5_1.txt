@@ -1,0 +1,50 @@
+1. If Z is norm (mean = 0, sd = 1)
+Find P(Z > 2.64)
+Find P(|Z| > 1.39)
+    Ans:
+
+      For P(Z > 2.64)
+      > pnorm(q=2.64,mean=0,sd=1,lower.tail = F)
+       [1] 0.004145301
+
+      For P(|Z| > 1.39)
+      >2* pnorm(q=1.39,mean=0,sd=1,lower.tail = F)
+       [1] 0.1645289
+
+
+2. Suppose p = the proportion of students who are admitted to the graduate school of the University of
+California at Berkeley, and suppose that a public relation officer boasts that UCB has historically had a
+40% acceptance rate for its graduate school. Consider the data stored in the table UCBAdmissions from
+1973. Assuming these observations constituted a simple random sample, are they consistent with the
+officerâ..s claim, or do they provide evidence that the acceptance rate was significantly less than 40%?
+Use an Î± = 0.01 significance level.
+   
+   Ans:
+      >UCBAdmissions
+
+      > apply(UCBAdmissions,1, sum)
+
+       []Admitted Rejected 
+         1755     2771 
+
+      > prop.test(x=1755,n=sum(1755,2771),p=0.4,conf.level=.99) #significance level =0.01 
+                                                                  so conf level=1-significance level=0.99
+
+	[]1-sample proportions test with continuity correction
+
+          data:  1755 out of sum(1755, 2771), null probability 0.4
+          X-squared = 2.7747, df = 1, p-value = 0.09576
+          alternative hypothesis: true p is not equal to 0.4
+          99 percent confidence interval:
+          0.3691722 0.4066776
+          sample estimates:
+                 p 
+          0.3877596
+
+       p-value = 0.09576 which is greater than the significance level =0.01,                
+                       we cannot reject the null hypothesis.
+
+
+            they consistent with the  officerâ..s claim
+
+
